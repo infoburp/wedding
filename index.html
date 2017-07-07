@@ -1,0 +1,68 @@
+<div id="wrapper">
+  <div id="to_go"></div>
+</div>
+<script>
+function mainLoop() {
+    update();
+    requestAnimationFrame(mainLoop);
+}
+requestAnimationFrame(mainLoop);
+function update(){
+    var dString = "March, 17, 2018";
+    var date_future = new Date(dString);
+    var date_now = new Date();
+    var delta = Math.abs(date_future - date_now) / 1000;
+    var days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+    var hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+    var minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+    var seconds = Math.floor(delta % 60);
+    var daysToGo = document.getElementById('to_go');
+    if (days != 1){
+        daysToGo.innerHTML = days + " days, "
+    }
+    else
+    {
+        daysToGo.innerHTML = days + " day, "
+    }
+    if (hours != 1){
+        daysToGo.innerHTML = daysToGo.innerHTML + hours + " hours, "
+    }
+    else
+    {
+        daysToGo.innerHTML = daysToGo.innerHTML + hours + " hour, "
+    }
+    if (minutes != 1){
+        daysToGo.innerHTML = daysToGo.innerHTML + minutes + " minutes, "
+    }
+    else
+    {
+        daysToGo.innerHTML = daysToGo.innerHTML + minutes + " minute, "
+    }
+    if (seconds != 1){
+        daysToGo.innerHTML = daysToGo.innerHTML + seconds + " seconds until we tie the knot ❤"
+    }
+    else
+    {
+        daysToGo.innerHTML = daysToGo.innerHTML + seconds + " second until we tie the knot ❤"
+    }
+}
+</script>
+<style type="text/css">
+    body {
+        background-color: #FC1C12;
+    }
+    #wrapper{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    #to_go{
+        font-weight: bold;
+        font-size: 24px;
+    }
+</style>
